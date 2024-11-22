@@ -24,14 +24,19 @@ IMAPS = {
     "dfirstmail.com": "imap.firstmail.ltd"  # Firstmail домен
 }
 
+CAPTCHA_PARAMS = {
+    "captcha_type": "v2",
+    "invisible_captcha": False,
+    "sitekey": "6LeeT-0pAAAAAFJ5JnCpNcbYCBcAerNHlkK4nm6y",
+    "captcha_url": "https://app.getgrass.io/register"
+}
 def get_imap_from_email(email):
-    domain = email.split("@")[1]  # Получаем домен из email
-    # Проверяем, содержит ли домен слово "firstmail"
+    domain = email.split("@")[1]
+
     if "firstmail" in domain:
-        return "imap.firstmail.ltd"  # Возвращаем общий IMAP для всех доменов с firstmail
+        return "imap.firstmail.ltd"
     elif domain in IMAPS:
-        return IMAPS[domain]  # Ищем точное совпадение домена
-    else:
+        return IMAPS[domain]
         print(f"IMAP для домена {domain} не найден.")
         return input("Введите IMAP-домен вручную: ")
 
@@ -51,7 +56,7 @@ def load_accounts(filepath):
 
 def select_imap(accounts):
     if accounts:
-        return accounts[0]["imap"]  # Возвращаем IMAP первого аккаунта
+        return accounts[0]["imap"]
     else:
         print("Список аккаунтов пуст. Укажите IMAP вручную.")
         return input("Введите IMAP-домен вручную: ")
@@ -67,10 +72,10 @@ SHOW_LOGS_RARELY = False  # not always show info about actions to decrease pc in
 MINING_MODE = True  # False - not mine grass, True - mine grass | Remove all True on approve \ register section
 
 # REGISTER PARAMETERS ONLY
-REGISTER_ACCOUNT_ONLY = False
+REGISTER_ACCOUNT_ONLY = True
 REGISTER_DELAY = (3, 7)
 
-TWO_CAPTCHA_API_KEY = ""
+TWO_CAPTCHA_API_KEY = "d91cde282734ac715b2cc39150c75458"
 ANTICAPTCHA_API_KEY = ""
 CAPMONSTER_API_KEY = ""
 CAPSOLVER_API_KEY = ""

@@ -5,7 +5,8 @@ from data.config import (
     ANTICAPTCHA_API_KEY,
     CAPMONSTER_API_KEY,
     CAPSOLVER_API_KEY,
-    CAPTCHAAI_API_KEY
+    CAPTCHAAI_API_KEY,
+    CAPTCHA_PARAMS
 )
 
 
@@ -21,7 +22,7 @@ class CaptchaService:
 
     def get_captcha_token(self):
         captcha_config = self.parse_captcha_type()
-        solver = captchatools.new_harvester(**captcha_config)
+        solver = captchatools.new_harvester(**captcha_config,**CAPTCHA_PARAMS)
         return solver.get_token()
 
     def parse_captcha_type(self, exit_on_fail: bool = True):

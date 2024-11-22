@@ -7,7 +7,7 @@ from imap_tools import AND #, MailBox
 from loguru import logger
 
 from core.utils.mail.mailbox import MailBox
-from data.config import EMAIL_FOLDER, IMAP_DOMAIN, SINGLE_IMAP_ACCOUNT, USE_PROXY_FOR_IMAP
+from data.config import IMAP_DOMAIN, SINGLE_IMAP_ACCOUNT, USE_PROXY_FOR_IMAP
 
 
 class MailUtils:
@@ -57,10 +57,8 @@ class MailUtils:
     ) -> Dict[str, any]:
 
 
-        if EMAIL_FOLDER:
-            email_folders = [EMAIL_FOLDER]
-        else:
-            email_folders = ["INBOX", "Junk", "JUNK", "Spam", "SPAM", "TRASH", "Trash"]
+
+        email_folders = ["INBOX", "Junk", "JUNK", "Spam", "SPAM", "TRASH", "Trash"]
 
         with MailBox(
                 self.domain,
